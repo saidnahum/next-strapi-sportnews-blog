@@ -1,5 +1,8 @@
 import Head from 'next/head';
 import React from 'react';
+import { Footer } from './Footer';
+import Header from './Header';
+import Hero from './Hero';
 
 const Layout = ({ title, keywords, description, children }) => {
    return (
@@ -9,8 +12,12 @@ const Layout = ({ title, keywords, description, children }) => {
             <meta name='description' content={description}/>
             <meta name='keywords' content={keywords}/>
          </Head>
+         <Header/>
+         <Hero/>
 
          { children }
+
+         <Footer/>
       </div>
    )
 };
