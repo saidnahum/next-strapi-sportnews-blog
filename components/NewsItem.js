@@ -1,19 +1,21 @@
-import Image from 'next/image'
 import React from 'react'
 import { API_URL } from '../config';
 import Link from 'next/link';
+import Image from 'next/image';
+import moment from 'moment';
 
 export const NewsItem = ({ news }) => {
 
+   console.log(news);
+
    return (
       <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm col-span-12 sm:col-span-6 lg:col-span-4">
-         <Image
-            width={150}
-            height={100}
+         <Image  
+            src={news.image ? news.image.formats.small.url : 'No Image'}
+            width={news.image.width}
+            height={news.image.height}
             layout='responsive'
             objectFit='cover'
-            src={news.image}
-            alt=""
          />
          <div className="p-5 border border-t-0">
             <p className="mb-3 text-xs font-semibold tracking-wide uppercase">
@@ -25,7 +27,7 @@ export const NewsItem = ({ news }) => {
                >
                   category
                </Link>
-               <span className="text-gray-600"> — {news.date}</span>
+               <span className="text-gray-600"> — {moment(news.date).format("yyyy-MM-DD")} {news.time}</span>
             </p>
             <Link
                href='/'

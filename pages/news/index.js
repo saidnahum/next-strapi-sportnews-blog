@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Hero from '../../components/Hero';
 import Layout from '../../components/Layout'
 import NewsItem from '../../components/NewsItem';
 import { API_URL } from '../../config/index';
@@ -26,7 +27,7 @@ export default function NewsPage({ news }) {
 }
 
 export async function getStaticProps (){
-	const res = await fetch(`${API_URL}/api/news`);
+	const res = await fetch(`${API_URL}/sports`);
 	const news = await res.json()
 
 	return {

@@ -1,5 +1,5 @@
-import Head from 'next/head'
 import Link from 'next/link'
+import Hero from '../components/Hero';
 import Layout from '../components/Layout'
 import NewsItem from '../components/NewsItem';
 import { API_URL } from '../config/index';
@@ -9,6 +9,7 @@ export default function HomePage({ news }) {
 	return (
 		<div>
 			<Layout>
+				<Hero/>
 				<div className='container mx-auto mt-10'>
 					<h1 className='px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 font-bold text-4xl pt-10'>Latest News</h1>
 					{news.length === 0 && <h3>No news</h3>}
@@ -31,11 +32,11 @@ export default function HomePage({ news }) {
 }
 
 export async function getStaticProps (){
-	const res = await fetch(`${API_URL}/api/news`);
+	const res = await fetch(`${API_URL}/sports?_sort=date:ASC&_limit=5`);
 	const news = await res.json()
 
 	return {
-		props: {news: news.slice(0, 5)},
+		props: {news},
 		revalidate: 1
 	}
 }
