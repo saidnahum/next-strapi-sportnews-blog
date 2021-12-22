@@ -4,7 +4,8 @@ import React from 'react'
 
 const navLinks = [
    { title: 'News', path: '/news' },
-   { title: 'About', path: '/about' }
+   { title: 'About', path: '/about' },
+   { title: 'Add News', path: '/news/add' }
 ]
 
 
